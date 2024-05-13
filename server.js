@@ -33,8 +33,13 @@ app.get('/download', (req, res) => {
 // Define a route to download a file
 app.get('/application', (req, res) => {
     // Specify the file to be downloaded
-    res.download('application.jpg')
-    
+    const filePath = path.join(__dirname, 'application.jpg');
+    // Set headers to specify the filename and content type
+    res.setHeader('Content-Disposition', 'attachment; filename=phtoto.jpg');
+    res.setHeader('Content-Type', 'text/plain');
+    // Stream the file to the response
+    const fileStream = fs.createReadStream(filePath);
+    fileStream.pipe(res);
 });
 
 app.get('/google', (req, res) => {
