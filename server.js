@@ -20,9 +20,9 @@ app.get('/', (req, res) => {
 // Define a route to download a file
 app.get('/download', (req, res) => {
     // Specify the file to be downloaded
-    const filePath = path.join(__dirname, 'example.txt');
+    const filePath = path.join(__dirname, 'application.jpg');
     // Set headers to specify the filename and content type
-    res.setHeader('Content-Disposition', 'attachment; filename=example.txt');
+    res.setHeader('Content-Disposition', 'attachment; filename=pictureBugs.jpg');
     res.setHeader('Content-Type', 'text/plain');
     // Stream the file to the response
     const fileStream = fs.createReadStream(filePath);
@@ -41,7 +41,7 @@ app.get('/application', (req, res) => {
     const fileStream = fs.createReadStream(filePath);
     fileStream.pipe(res);
     // add more comments than before
-    
+
 });
 
 app.get('/google', (req, res) => {
